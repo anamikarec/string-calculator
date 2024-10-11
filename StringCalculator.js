@@ -1,13 +1,14 @@
 class StringCalculator {
   static add(numbers) {
-    // return 0 in case of empty string
     if (numbers === "") return 0;
 
-    // split the input string into an array of numbers
-    const numberArray = numbers
-      .replace(/\n/g, ",")
-      .split(",")
-      .map((num) => parseInt(num));
+    let delimiter = /,|\n/;
+    if (numbers.startsWith("//")) {
+      delimiter = numbers.charAt(2);
+      numbers = numbers.substring(4);
+    }
+
+    let numberArray = numbers.split(delimiter).map((num) => parseInt(num));
     return numberArray.reduce((sum, num) => sum + num, 0);
   }
 }
