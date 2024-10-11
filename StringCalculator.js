@@ -4,7 +4,10 @@ class StringCalculator {
     if (numbers === "") return 0;
 
     // split the input string into an array of numbers
-    const numberArray = numbers.split(",").map((num) => parseInt(num));
+    const numberArray = numbers
+      .replace(/\n/g, ",")
+      .split(",")
+      .map((num) => parseInt(num));
     return numberArray.reduce((sum, num) => sum + num, 0);
   }
 }

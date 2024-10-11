@@ -18,3 +18,7 @@ test("should return the sum for an unknown amount of numbers", () => {
   expect(StringCalculator.add("1,2,3")).toBe(6);
   expect(StringCalculator.add("4,5,6,7")).toBe(22);
 });
+
+test("should handle new lines between numbers", () => {
+  expect(StringCalculator.add("1\n2,3")).toBe(6);
+});
