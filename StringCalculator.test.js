@@ -26,3 +26,12 @@ test("should handle new lines between numbers", () => {
 test("should support different delimiters", () => {
   expect(StringCalculator.add("//;\n1;2")).toBe(3);
 });
+
+test("should throw an exception for negative numbers", () => {
+  expect(() => StringCalculator.add("1,-2,3")).toThrow(
+    "Negatives not allowed: -2"
+  );
+  expect(() => StringCalculator.add("1,-2,-3")).toThrow(
+    "Negatives not allowed: -2,-3"
+  );
+});

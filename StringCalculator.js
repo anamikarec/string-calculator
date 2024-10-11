@@ -9,6 +9,12 @@ class StringCalculator {
     }
 
     let numberArray = numbers.split(delimiter).map((num) => parseInt(num));
+
+    let negatives = numberArray.filter((n) => n < 0);
+    if (negatives.length > 0) {
+      throw new Error(`Negatives not allowed: ${negatives.join(",")}`);
+    }
+
     return numberArray.reduce((sum, num) => sum + num, 0);
   }
 }
